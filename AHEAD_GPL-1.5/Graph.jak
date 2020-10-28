@@ -1,0 +1,19 @@
+
+public refines class Graph {
+	public void addAnEdge(String start,String end, int weight) {
+		Node source=Super(String).findsNode(start);
+		Node target=Super(String).findsNode(end);
+		addEdge(source, new Neighbor(target,weight));
+	}
+	public void addEdges(Node source, Neighbor nbr) {
+		Super( Node,  Neighbor ).addEdge( source,nbr );
+        if ( isDirected==false )
+        {
+            Node end = nbr.neighbor;
+            end.addWeight( end,nbr.weight );
+        } 
+	}
+	public void display(){
+        Super().display();
+    }
+}

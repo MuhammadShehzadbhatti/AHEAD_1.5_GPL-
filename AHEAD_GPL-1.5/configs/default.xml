@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="GraphPL_Version12"/>
+	<feature automatic="selected" name="Node"/>
+	<feature automatic="selected" name="Position"/>
+	<feature automatic="selected" name="Edge"/>
+	<feature manual="selected" name="Directed"/>
+	<feature manual="selected" name="Weighted"/>
+	<feature automatic="selected" name="Search"/>
+	<feature automatic="unselected" name="DFS"/>
+	<feature manual="selected" name="BFS"/>
+	<feature automatic="selected" name="Algorithm"/>
+	<feature name="Transpose"/>
+	<feature manual="selected" name="Cycle"/>
+	<feature name="MST"/>
+	<feature manual="selected" name="ShortestPath"/>
+</configuration>

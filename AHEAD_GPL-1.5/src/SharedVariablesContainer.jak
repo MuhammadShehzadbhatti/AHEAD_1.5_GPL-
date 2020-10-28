@@ -1,0 +1,9 @@
+/**
+ * TODO description
+ */
+import java.util.LinkedList;
+
+SoUrCe RooT Position "../features/Position/SharedVariablesContainer.jak";
+public class SharedVariablesContainer {
+	public static LinkedList queueList=new LinkedList();
+}

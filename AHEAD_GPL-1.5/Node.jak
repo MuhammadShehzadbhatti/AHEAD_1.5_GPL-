@@ -1,0 +1,23 @@
+/**
+ * TODO description
+ */
+public refines class Node {
+	public void addWeight(Node target, int weight) {
+		Neighbor neighbor =
+                ( Neighbor ) ( target.neighbors ).removeLast();
+		neighbor.weight=weight;
+		(target.neighbors).add(neighbor);
+	}
+	public void adjustAdorns( Neighbor sourceNeighbor )
+    {
+        Neighbor targetNeighbor =
+                ( Neighbor )neighbors.getLast();
+        targetNeighbor.weight = sourceNeighbor.weight;
+        Super( Neighbor ).adjustAdorns( sourceNeighbor );
+    }
+	public void display() {
+		Super().display();
+	}
+
+	
+}

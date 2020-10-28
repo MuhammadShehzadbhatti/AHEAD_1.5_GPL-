@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and abstract="true" mandatory="true" name="GraphPL_Version12">
+            <and abstract="true" mandatory="true" name="Node">
+                <feature mandatory="true" name="Position"/>
+            </and>
+            <and abstract="true" mandatory="true" name="Edge">
+                <feature name="Directed"/>
+                <feature name="Weighted"/>
+            </and>
+            <alt abstract="true" name="Search">
+                <feature name="DFS"/>
+                <feature name="BFS"/>
+            </alt>
+            <and abstract="true" name="Algorithm">
+                <feature name="Transpose"/>
+                <feature name="Cycle"/>
+                <feature name="MST"/>
+                <feature name="ShortestPath"/>
+            </and>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <imp>
+                <var>Transpose</var>
+                <var>Directed</var>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>

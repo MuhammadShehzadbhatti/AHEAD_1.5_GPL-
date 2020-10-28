@@ -1,0 +1,15 @@
+/**
+ * TODO description
+ */
+public refines class Node{
+	public int shortestDistance = Integer.MAX_VALUE;
+//	public Node prnt,source,target,trgtNode;
+	public Node prnt;
+	public void display() {
+		Super().display();
+	}
+//	@Override
+//	public int compareTo(Node other) {
+//		return Double.compare(shortestDistance, other.shortestDistance);
+//	}
+}

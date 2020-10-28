@@ -1,0 +1,22 @@
+
+public refines class Edge implements EdgeInterface{
+	private int weight;
+	public void theEdge( Node start,  Node end, int weight ) {
+	    Super( Node, Node ).theEdge( start,end );
+	    this.weight = weight;
+	}
+	public void adjustAdorns( Edge edge ) {
+		setWeight(edge.getWeight());
+		Super( Edge ).adjustAdorns( edge );
+	}
+	public void setWeight(int weight){
+        this.weight = weight;
+    }
+    public int getWeight(){
+        return this.weight;
+    }
+    public void display() {
+        System.out.print( " Weight=" + getWeight() );
+        Super().display();
+    }
+}

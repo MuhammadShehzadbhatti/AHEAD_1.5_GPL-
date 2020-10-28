@@ -1,0 +1,107 @@
+
+import java.lang.Integer;
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.HashSet;
+public refines class Graph {
+    public  Graph Prim( Node node ) {
+        Node rootNode;
+
+        rootNode = node;
+        Node n;
+        for ( NodeItr nodeItr = getNode(); nodeItr.hasNext(); ){
+            n = nodeItr.next();
+            n.predecessor = null;
+            n.key = Integer.MAX_VALUE;
+        }
+        rootNode.key = 0;
+        rootNode.predecessor = null;
+        LinkedList Queue = new LinkedList();
+        Set index = new HashSet( );
+        Queue.add( rootNode );
+        index.add( rootNode.getName( ) );
+        for ( NodeItr nodeItr = getNode(); nodeItr.hasNext(); ){
+            n = nodeItr.next();
+            if ( n.key != 0 ){
+                Queue.add( n );
+                index.add( n.getName( ) );
+            }
+        }
+        Node ucurrent;
+        int j,l;
+        int k=0;
+        LinkedList Uneighbors;
+        Node u,v;
+        EdgeInterface en;
+        NeighborInterface vn;
+        int wuv;
+        boolean isNeighborInQueue = false;
+        while ( Queue.size()!=0 ){
+            u = ( Node )Queue.removeFirst();
+            index.remove( u.getName( ) );
+            Uneighbors = u.getNodeNeighbors( );
+            k = 0;
+            for( EdgeItr edgeItr = u.getEdges(); edgeItr.hasNext(); k++ ){
+                vn = ( NeighborInterface )Uneighbors.get( k );
+                en = edgeItr.next();
+                v = en.getOtherNode(u);
+                isNeighborInQueue = false;
+                if ( index.contains( v.getName( ) ) )
+                    isNeighborInQueue = true;
+                wuv = en.getWeight();
+                if ( isNeighborInQueue && ( wuv < v.key ) ){
+                    v.key = wuv;
+                    v.predecessor = u.getName();
+                    Uneighbors.set( k,vn );
+                    Object residue = ( Object ) v;
+                    Queue.remove( residue );
+                    index.remove( v.getName( ) );
+                    int position = Collections.binarySearch( Queue,v,new Comparator() {
+                        public int compare( Object o1, Object o2 ){
+                            Node v1 = ( Node )o1;
+                            Node v2 = ( Node )o2;
+                            if ( v1.key < v2.key )
+                                return -1;
+                            if ( v1.key == v2.key )
+                                return 0;
+                            return 1;
+                        }
+                    } );
+                    if ( position < 0 ){
+                        Queue.add( - ( position+1 ),v );
+                    }
+                    else {
+                        Queue.add( position,v );
+                    }
+                    index.add( v.getName( ) );
+
+                }
+            }
+        }
+        String theName;
+        Graph newGraph = new  Graph();
+        for ( NodeItr nodeItr = getNode( ); nodeItr.hasNext( ); ){
+            Node vtx = nodeItr.next( );
+            theName = vtx.name;
+            System.out.println("______The Name MST : "+theName);
+            newGraph.addNode( new  Node().setName( theName ) );
+        }
+        Node theVertex, thePred;
+        Node theNewVertex, theNewPred;
+        EdgeInterface   e;
+        for ( NodeItr nodeItr = getNode( ); nodeItr.hasNext( ); ){
+            theVertex = nodeItr.next( );
+            thePred = findsNode( theVertex.predecessor );
+            if ( thePred==null )
+                continue;
+            theNewVertex = newGraph.findsNode( theVertex.name );
+            theNewPred = newGraph.findsNode( thePred.name );
+            EdgeInterface theNewEdge = newGraph.addEdge( theNewPred, theNewVertex );
+            e = findsEdge( thePred,theVertex );
+            theNewEdge.adjustAdorns( e );
+        }
+        return newGraph;
+    } 
+}

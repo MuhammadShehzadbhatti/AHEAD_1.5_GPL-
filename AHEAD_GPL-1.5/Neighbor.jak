@@ -1,0 +1,23 @@
+/**
+ * TODO description
+ */
+public refines class Neighbor {
+	public int weight;
+    public Neighbor( Node neighbor, int weight ) {
+        NeighborConstructor( neighbor, weight );
+    }
+    public void NeighborConstructor(Node nbr,int weight) {
+		Super(Node).NodeNeighbor(nbr);
+		this.weight=weight;
+    }
+    public void display(){
+        System.out.print( " Weight :: " + weight + " " );
+        Super().display();
+    }
+    public void setWeight(int weight) {
+		this.weight = weight;
+	}
+    public int getWeight() {
+		return weight;
+	}
+}

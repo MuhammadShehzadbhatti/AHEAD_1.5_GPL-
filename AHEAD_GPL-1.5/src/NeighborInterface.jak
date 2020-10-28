@@ -1,0 +1,7 @@
+
+import java.util.LinkedList;
+
+SoUrCe RooT Position "../features/Position/NeighborInterface.jak";
+public interface NeighborInterface {
+
+}
